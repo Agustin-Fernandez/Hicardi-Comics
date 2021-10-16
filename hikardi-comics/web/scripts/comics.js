@@ -114,7 +114,7 @@ const getComics = name => {
 				]
 			},
 			{
-				name: 'Esta moralmente mal levantarse minitas en un calabozo?',
+				name: 'La Bizzarra Aventura de José Joestrella',
 				slug: 'el-eternauta-(english)',
 				images: [
 					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
