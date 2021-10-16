@@ -93,6 +93,10 @@ a {
 	font-weight: 600;
 }
 
+.logo {
+    width: 20%;
+    height: 100%;
+}
 
 footer {
 	width: 100vw;

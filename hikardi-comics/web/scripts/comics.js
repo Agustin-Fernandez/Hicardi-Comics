@@ -1,4 +1,4 @@
-let currentPage = 10
+let currentPage = 1
 
 const run = () => {
 	const { comics: newComics, pages } = getComics('')
