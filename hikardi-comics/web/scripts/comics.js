@@ -1,8 +1,7 @@
 let currentPage = 1
 
 const run = () => {
-	const { comics: newComics, pages } = getComics('')
-	renderComics(newComics)
+	const { comics: newComics, pages } = filterComics('')
 	renderComics(newComics)
 	renderPaginator(pages)
 }
@@ -81,7 +80,7 @@ const renderComics = comics => {
 	const container = document.querySelector('#comics-container')
 	removeChilds(container)
 
-	comics.forEach(comic => {
+	comics.slice(0, 8).forEach(comic => {
 		container.insertAdjacentHTML(
 			'beforeend',
 			getComicCard(comic)
@@ -89,85 +88,13 @@ const renderComics = comics => {
 	})
 }
 
-const getComics = name => {
-	// const response = await fetch(`api/comics?search=${name}`)
-	// const data = await response.json()
+const filterComics = name => {
+	if(!name) return { comics, pages: Math.ceil(comics.length / 8) }
+	const filteredComics = comics.filter(x => x.name.includes(name))
+
 	data = {
-		pages: 21,
-		comics: [
-			{
-				name: 'El eternauta (english)',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg'
-				]
-			},
-			{
-				name: 'Esta moralmente mal levantarse minitas en un calabozo?',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg'
-				]
-			},
-			{
-				name: 'La Bizzarra Aventura de José Joestrella',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg'
-				]
-			},
-			{
-				name: 'Esta moralmente mal levantarse minitas en un calabozo?',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg'
-				]
-			},
-			{
-				name: 'Esta moralmente mal levantarse minitas en un calabozo?',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg'
-				]
-			},
-			{
-				name: 'Esta moralmente mal levantarse minitas en un calabozo?',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg'
-				]
-			},
-			{
-				name: 'Esta moralmente mal levantarse minitas en un calabozo?',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg'
-				]
-			},
-			{
-				name: 'Esta moralmente mal levantarse minitas en un calabozo?',
-				slug: 'el-eternauta-(english)',
-				images: [
-					'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-					'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg',
-					'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg'
-				]
-			}
-		]
+		pages: Math.ceil(filteredComics.length / 8),
+		comics: filteredComics
 	}
 	return data
 }
@@ -176,9 +103,10 @@ const searchBox = document.querySelector('#search-input')
 
 searchBox.addEventListener('input', (e) => {
 	const name = e.target.value
-	const { comics: newComics } = getComics(name)
+	const { comics: newComics, pages } = filterComics(name)
 
 	renderComics(newComics)
+	renderPaginator(pages)
 })
 
 run()

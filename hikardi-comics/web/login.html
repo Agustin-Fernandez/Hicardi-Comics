@@ -15,8 +15,19 @@
 	</nav>
     
 	<main>
-        <p> <div class="texto-login">Nombre de Usuario<input type="text" id="user-input" class="text-input" /></div></p>
-        <p> <div class="texto-login">Contraseña<input type="text" id="password-input" class="text-input" /></div></p>
+		<form method="post" action="php/login_validation.php" class="form">
+				<div class="form-field">
+					<label class="texto-login">Nombre de Usuario</label>
+					<input type="text" name="username" class="text-input" />
+				</div>
+				<br />
+				<br />
+				<div class="form-field">
+					<label class="texto-login">Contraseña</label>
+					<input type="text" name="password" class="text-input" />
+				</div>
+				<button class="form-button">Ingresar</button>
+		</form>
 	</main>
 
 	<footer>
