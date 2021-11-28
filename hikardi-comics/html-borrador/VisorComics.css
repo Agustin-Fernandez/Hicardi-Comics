@@ -1,0 +1,90 @@
+     body{
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../web/imgs/Hicardi_BackGod.png);
+}
+#VisorComics{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Row{
+    margin: 1% 0% 1%;
+    width: 90%;
+    padding: 1%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    border-radius: 5px;
+}
+.DatosComic, .PrevNext {
+
+width: 40%;
+height: 5%;
+}
+
+#Nombre{
+font-weight: 700;
+}
+
+#Autor{
+    font-weight: normal;
+    font-size: 1em;
+}
+.PrevNext{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.PrevNextButt{
+    padding: 2% 4%;
+    border-radius: 5px;
+    margin: 0% 2%;
+    border: none;
+    
+}
+
+#Comic{
+    margin: 0% 1% ;
+    width: 90%;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+}
+.Imagen{
+    color: black;
+}
+
+#Footer{
+margin-top: 2%;
+    width: 100%;
+    background-color: #512C96;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#Footer hr{
+    margin: 1%;
+    width: 20%;
+    border: 1px solid white;
+}
+
+.redesContainer{
+    display: flex;
+    margin-bottom: 2%;
+    width: 20%;
+    justify-content: space-around;
+}
+
+.redesContainer i {
+    color: white;
+    font-size: 30px;
+}
+
+.LogoFooter{
+
+    width: 15%;
+}
