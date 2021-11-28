@@ -1,33 +1,14 @@
 <?php
 	session_start();
-	// include 'php/db_connection.php';
-	// $sql = "SELECT * FROM comics LIMIT 100";
+	include 'php/db_connection.php';
+	$sql = "SELECT * FROM comics LIMIT 100";
 
-	// $query = $mysqli->query($sql);
-	// $count = $query->num_rows;
-	$count = 241;
-	$comic =  [
-			'name' => 'El eternauta (english)',
-			'slug' => 'el-eternauta-(english)',
-			'images' => [
-				'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-				'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg',
-				'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg'
-			]
-	];
-	$comic2 =  [
-			'name' => 'Test',
-			'slug' => 'el-eternauta-(english)',
-			'images' => [
-				'https://www.androidpure.com/wp-content/uploads/2014/12/Xiaomi-Mi-Logo-e1418320898263.png',
-				'https://brandemia.org/sites/default/files/inline/images/volkswagen_logo-portada.jpg',
-				'https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg'
-			]
-	];
-	$comics = [$comic, $comic2, $comic, $comic, $comic, $comic, $comic, $comic, $comic, $comic ];
+	$query = $mysqli->query($sql);
+	$commic = $query->fetch_all(MYSQLI_ASSOC);
+	$count = $query->num_rows;
 
 	echo '<script>';
-	echo 'var comics = ' . json_encode($comics);
+	echo 'var comics = ' . json_encode($commic);
 	echo '</script>';
 ?>
 
@@ -42,15 +23,23 @@
 </head>
 <body class="fondo">
 	<nav class="navbar">
-        <a href="index.html" class="logo--container">
+        <a href="" class="logo--container">
 					<img src="LogoAncho.png" alt="Hicardi Comics" class="logo">
 				</a>
         <input type="text" id="search-input" class="text-input" />
 
 	<?php if ( isset($_SESSION["id"]) ) { ?>
-		<span>Bienvenido, <?php echo $_SESSION["username"] ?></span>
+		<div style="display: flex;">
+			<span>Bienvenido, <?php echo $_SESSION["username"] ?></span>
+			<div style="width: 1px; background: #333; margin: 0 8px;"></div>
+			<a href="php/logout.php" style="color: blue;">Cerrar sesión</a>
+		</div>
 	<?php } else { ?>
-		<a href="login.html">Perfil / login</a>
+		<div style="display: flex;">
+			<a href="login.php" style="color: blue;">Login</a>
+			<div style="width: 1px; background: #333; margin: 0 8px;"></div>
+			<a href="registro.php" style="color: blue;">Registro</a>
+		</div>
 	<?php } ?>
 	</nav>
 	<main>

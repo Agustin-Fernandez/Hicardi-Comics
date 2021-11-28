@@ -9,9 +9,7 @@
 </head>
 <body class="fondo">
 	<nav class="navbar">
-        <a href="index.html" class="logo--container"> <img src="LogoAncho.png" alt="Hicardi Comics" class="logo"> </a>
-        <div> <div/>
-		<a href="login.html">Perfil / login</a>
+        <a href="./" class="logo--container"> <img src="LogoAncho.png" alt="Hicardi Comics" class="logo"> </a>
 	</nav>
     
 	<main>
@@ -24,7 +22,7 @@
 				<br />
 				<div class="form-field">
 					<label class="texto-login">Contraseña</label>
-					<input type="text" name="password" class="text-input" />
+					<input type="password" name="password" class="text-input" />
 				</div>
 				<button class="form-button">Ingresar</button>
 		</form>

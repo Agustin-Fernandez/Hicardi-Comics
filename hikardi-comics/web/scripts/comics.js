@@ -1,7 +1,8 @@
 let currentPage = 1
+let filterName = ''
 
 const run = () => {
-	const { comics: newComics, pages } = filterComics('')
+	const { comics: newComics, pages } = filterComics()
 	renderComics(newComics)
 	renderPaginator(pages)
 }
@@ -13,7 +14,6 @@ const removeChilds = (container) => {
 }
 
 const handlePaginatorClick = (action, pages) => {
-	console.log(action)
 
 	switch (action) {
 		case 'back':
@@ -30,6 +30,8 @@ const handlePaginatorClick = (action, pages) => {
 	}
 	
 	renderPaginator(pages)
+	const { comics: newComics } = filterComics()
+	renderComics(newComics)
 }
 
 const getPaginator = pages => `
@@ -67,8 +69,8 @@ const renderPaginator = (pages) => {
 }
 
 const getComicCard = comic => `
-	<a class="comic-card" href="${comic.slug}">
-		<img src=${comic.images[0]} class="comic-card--image" />
+	<a class="comic-card" href="comic.php?id=${comic.id}">
+		<img src=${comic.images.split(',')[0]} class="comic-card--image" />
 		<div class="comic-card--textcontainer">
 			<h3 class="comic-card--text">${comic.name}</h3>
 		</div>
@@ -76,11 +78,11 @@ const getComicCard = comic => `
 `
 
 const renderComics = comics => {
-	console.log('render')
 	const container = document.querySelector('#comics-container')
 	removeChilds(container)
 
-	comics.slice(0, 8).forEach(comic => {
+	const start = (currentPage - 1) * 8
+	comics.slice(start, start + 8).forEach(comic => {
 		container.insertAdjacentHTML(
 			'beforeend',
 			getComicCard(comic)
@@ -88,9 +90,9 @@ const renderComics = comics => {
 	})
 }
 
-const filterComics = name => {
-	if(!name) return { comics, pages: Math.ceil(comics.length / 8) }
-	const filteredComics = comics.filter(x => x.name.includes(name))
+const filterComics = () => {
+	if(!filterName) return { comics, pages: Math.ceil(comics.length / 8) }
+	const filteredComics = comics.filter(x => x.name.includes(filterName))
 
 	data = {
 		pages: Math.ceil(filteredComics.length / 8),
@@ -102,8 +104,8 @@ const filterComics = name => {
 const searchBox = document.querySelector('#search-input')
 
 searchBox.addEventListener('input', (e) => {
-	const name = e.target.value
-	const { comics: newComics, pages } = filterComics(name)
+	filterName = e.target.value
+	const { comics: newComics, pages } = filterComics()
 
 	renderComics(newComics)
 	renderPaginator(pages)

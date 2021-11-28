@@ -1,6 +1,6 @@
      body{
     font-family: 'Montserrat', sans-serif;
-    background-image: url(../web/imgs/Hicardi_BackGod.png);
+    background-image: url(../imgs/Hicardi_BackGod.png);
 }
 #VisorComics{
     display: flex;
@@ -34,6 +34,14 @@ font-weight: 700;
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
+    cursor: pointer;
+    row-gap: 8px;
+}
+.buttonIconLeft {
+    margin-right: 4px;
+}
+.buttonIconRight {
+    margin-left: 4px;
 }
 
 .PrevNextButt{
@@ -47,14 +55,21 @@ font-weight: 700;
 #Comic{
     margin: 0% 1% ;
     width: 90%;
-    padding: 1%;
+    padding: 32px;
     display: flex;
     justify-content: center;
     background-color: white;
     border-radius: 5px;
 }
-.Imagen{
-    color: black;
+
+.Imagen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Imagen > img {
+    width: 80%;
 }
 
 #Footer{

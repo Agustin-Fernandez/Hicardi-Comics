@@ -1,3 +1,26 @@
+<?php
+	session_start();
+	include 'php/db_connection.php';
+
+    $id = $_GET['id'];
+	$sql = "SELECT * FROM comics WHERE id = $id LIMIT 100";
+
+	$query = $mysqli->query($sql);
+    $commic = $query->fetch_assoc();
+    $images = explode(',', $commic['images']);
+
+    $imageIdx = 0;
+    if(isset($_GET['image'])) {
+        $imageIdx = $_GET['image'];
+    }
+
+    $image = explode(',', $commic['images'])[$imageIdx];
+	echo '<script>';
+	echo 'var images = ' . json_encode($images);
+	echo ';var imageIdx = ' . $imageIdx;
+	echo '</script>';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,8 +28,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nombre Comic</title> <!--Obtener el titulo del comic del json-->
-    <link rel="stylesheet" href="../web/css/styles.css">   <!--Modificar links y src-->
-    <link rel="stylesheet" href="./VisorComics.css">
+    <link rel="stylesheet" href="css/styles.css">   <!--Modificar links y src-->
+    <link rel="stylesheet" href="css/comic.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -15,31 +38,34 @@
 </head>
 <body>
 <nav class="navbar">
-        <a href="index.html" class="logo--container"> <img src="../web/imgs/LogoAncho.png" alt="Hicardi Comics" class="logo"> </a>
-		<a href="login.html"> <i class="fa fa-2x fa-user-circle" aria-hidden="true"></i> Perfil / login</a>
+        <a href="./" class="logo--container"> <img src="../web/imgs/LogoAncho.png" alt="Hicardi Comics" class="logo"> </a>
 	</nav>    
 <section id="VisorComics">
     <div class="Row">
         <div class="DatosComic">
-            <h2 id="Nombre">  Nombre de Comic</h2> <!--Obtener el titulo del comic del json-->
-            <h2 id="Autor">  Autor de Comic</h2> <!--Obtener el autor del comic del json-->
+            <h2 id="Nombre">
+                <?php echo $commic['name']; ?>
+            </h2> <!--Obtener el titulo del comic del json-->
+            <h2 id="Autor">
+                <?php echo $commic['author']; ?>
+            </h2> <!--Obtener el autor del comic del json-->
         </div>
         <div class="PrevNext">
-            <button class="PrevNextButt">
-                <i class="fa fa-solid fa-arrow-left"></i>
-                Anterior
-            </button>
-            <button class="PrevNextButt">
+            <a class="PrevNextButt" id="PrevButt">
+                    <i class="fa fa-solid fa-arrow-left buttonIconLeft"></i>
+                    Anterior
+            </a>
+            <a class="PrevNextButt" id="NextButt">
                 Próximo
-                <i class="fa fa-solid fa-arrow-right"></i>
-            </button>
+                <i class="fa fa-solid fa-arrow-right buttonIconRight"></i>
+            </a>
         </div>
        
     </div>
 
     <article id="Comic">
         <div class="Imagen">
-            <img src="../web/imgs/181680365_309135360782989_921227725640816156_n.jpg" alt="">
+            <img src="<?php echo $image; ?>" alt="" id="commicImage">
         </div>
     </article>
 </section>
@@ -59,6 +85,6 @@
     
 </section>
 
+	<script src="scripts/comic.js"></script>
 </body>
 </html>
-
