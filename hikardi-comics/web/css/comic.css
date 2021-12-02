@@ -1,4 +1,4 @@
-     body{
+body{
     font-family: 'Montserrat', sans-serif;
     background-image: url(../imgs/Hicardi_BackGod.png);
 }
@@ -75,7 +75,7 @@ font-weight: 700;
 #Footer{
 margin-top: 2%;
     width: 100%;
-    background-color: #512C96;
+    background-color: #E8998D;
     display: flex;
     flex-direction: column;
     justify-content: center;
