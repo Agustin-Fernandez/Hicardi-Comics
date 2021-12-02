@@ -105,10 +105,14 @@ a {
 
 .texto-login {
     display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: flex-end;
-	padding: 10px 64px;
+	background-color: white;
+	border-radius: 16px;
+	height: 32px;
+	padding: 0px 16px;
+	margin: 24px 0;
 }
 
 .form {

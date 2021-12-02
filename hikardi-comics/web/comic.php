@@ -27,7 +27,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nombre Comic</title> <!--Obtener el titulo del comic del json-->
+    <title>Hicardi Comics</title> <!--Obtener el titulo del comic del json-->
     <link rel="stylesheet" href="css/styles.css"> 
     <link rel="stylesheet" href="css/comic.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
