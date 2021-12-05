@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "#luciano";
-$database = "hikardi";
+$username = "agusfer";
+$password = "fera2019";
+$database = "Agustin";
 
 // Create connection
 $mysqli = new mysqli($servername, $username, $password, $database);
@@ -25,7 +25,7 @@ $mysqli->query(
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
   `author` varchar(64) NOT NULL,
-  `images` varchar(8192) NOT NULL,
+  `images` text NOT NULL,
   PRIMARY KEY (`id`))"
 );
 
