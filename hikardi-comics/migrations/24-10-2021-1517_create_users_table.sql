@@ -1,4 +1,4 @@
-CREATE TABLE `hikardi`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(48) NULL,
   `password` VARCHAR(48) NULL,
