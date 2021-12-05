@@ -38,7 +38,7 @@
 </head>
 <body>
 <nav class="navbar">
-        <a href="./" class="logo--container"> <img src="../web/imgs/LogoAncho.png" alt="Hicardi Comics" class="logo"> </a>
+        <a href="./" class="logo--container"> <img src="/imgs/LogoAncho.png" alt="Hicardi Comics" class="logo"> </a>
 	</nav>    
 <section id="VisorComics">
     <div class="Row">
@@ -73,14 +73,14 @@
 
 <!--FOOTER-->
 <section id="Footer">
-        <img class="LogoFooter" src="../web/imgs/LogoAncho.png" class="LogoNav" alt="">
+        <img class="LogoFooter" src="/imgs/LogoAncho.png" class="LogoNav" alt="">
 
     
     <hr>
     <div class="redesContainer">
-        <a href="../web/imgs/fb.png"><i class="fa fa-facebook-f w3-hover-opacity"></i></a>
+        <a href="/imgs/fb.png"><i class="fa fa-facebook-f w3-hover-opacity"></i></a>
         <a href="https://github.com/Agustin-Fernandez/Hicardi-Comics"><i class="fa fa-github w3-hover-opacity"></i></a>
-        <a href="../web/imgs/ig.png"> <i class="fa fa-instagram w3-hover-opacity"></i></a>
+        <a href="/imgs/ig.png"> <i class="fa fa-instagram w3-hover-opacity"></i></a>
     </div>
     
 </section>
